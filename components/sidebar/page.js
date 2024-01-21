@@ -1,6 +1,7 @@
 "use client";
 
 import { auth } from "@/firebase";
+import { closeLoginModal, closeSignupModal } from "@/lib/modalSlice/page";
 import { signOutUser } from "@/lib/userSlice/page";
 import {
   HomeIcon,
@@ -25,6 +26,8 @@ export default function Sidebar() {
   async function handleSignOut() {
     await signOut(auth);
     dispatch(signOutUser());
+    dispatch(closeSignupModal());
+    dispatch(closeLoginModal())
   }
 
   return (
