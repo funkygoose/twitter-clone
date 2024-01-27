@@ -62,7 +62,7 @@ export default function TweetInput() {
             </div>
           </div>
           <button
-            className="bg-[#1d9bf0] rounded-full px-4 py-1.5 disabled:bg-opacity-50"
+            className="bg-[#1d9bf0] rounded-full px-4 py-1.5 disabled:opacity-50"
             onClick={sendTweet}
             disabled={!text}
           >
