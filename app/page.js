@@ -6,6 +6,7 @@ import PostFeed from "@/components/postfeed/page";
 import Trending from "@/components/trending/page";
 import BottomBanner from "@/components/bannerBanner/Banner";
 import { useSelector } from "react-redux";
+import CommentModal from "@/components/modals/commentModal/page";
 
 export default function Home() {
   const username = useSelector((state) => state.user.username);
@@ -20,6 +21,9 @@ export default function Home() {
         <PostFeed />
         <Trending />
       </div>
+
+      <CommentModal />
+
       {!username && <BottomBanner />}
     </div>
   );
