@@ -2,7 +2,7 @@
 
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import TweetInput from "../tweetInput/page";
-import Tweet from "../tweets/tweet";
+import Tweet from "../tweets/page";
 import { db } from "@/firebase";
 import { useEffect, useState } from "react";
 
@@ -30,7 +30,7 @@ export default function PostFeed() {
       </div>
       <TweetInput />
       {tweets.map(tweet => {
-        return <Tweet key={tweet.id} data={tweet.data()}/>
+        return <Tweet key={tweet.id} id={tweet.id} data={tweet.data()}/>
       })}
       <Tweet />
     </div>
