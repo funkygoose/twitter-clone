@@ -5,9 +5,9 @@ import TweetInput from "../tweetInput/page";
 import Tweet from "../tweets/page";
 import { db } from "@/firebase";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function PostFeed() {
-  
   const [tweets, setTweets] = useState([]);
   useEffect(() => {
     const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
@@ -15,7 +15,7 @@ export default function PostFeed() {
       setTweets(snapshot.docs);
     });
 
-    return unsubscribe
+    return unsubscribe;
   }, []);
   return (
     <div
@@ -29,8 +29,12 @@ export default function PostFeed() {
         Home
       </div>
       <TweetInput />
-      {tweets.map(tweet => {
-        return <Tweet key={tweet.id} id={tweet.id} data={tweet.data()}/>
+      {tweets.map((tweet) => {
+        return (
+          <Link href={tweet.id} key={tweet.id}>
+            <Tweet key={tweet.id} id={tweet.id} data={tweet.data()} />
+          </Link>
+        );
       })}
       <Tweet />
     </div>
